@@ -6,8 +6,9 @@ import random
 from Reimplementations.Utils import *
 import matplotlib.pyplot as plt
 
-class PPO(object):
+class Agent(object):
     def __init__(self, env, ep_max, ep_len, gamma, a_lr, c_lr, batch, a_update_step, c_update_step, s_dim, epsilon):
+        super(Agent, self).__init__()
         self.ep_max = ep_max
         self.ep_len = ep_len
         self.gamma = gamma
@@ -131,7 +132,7 @@ class PPO(object):
             )
         return all_ep_r
 
-ppo = PPO("CartPole-v0", 200, 200, 0.9, 0.0001, 0.0002, 32, 10, 10, 4, 0.2)
+ppo = Agent("CartPole-v0", 200, 200, 0.9, 0.0001, 0.0002, 32, 10, 10, 4, 0.2)
 all_ep_r = ppo.run()
 plt.plot(range(len(all_ep_r)), all_ep_r)
 plt.show()
